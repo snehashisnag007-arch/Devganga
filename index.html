@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEVGANGA — Cafe Moodboard, Rishikesh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0e0c0a;
+  --paper: #f5f0e8;
+  --paper2: #ede8dc;
+  --gold: #b87c2a;
+  --ganga: #1a8fa5;
+  --terra: #c25a3a;
+  --forest: #3a7d5e;
+  --iron: #2a2a2a;
+  --cream: #faf7f0;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --mono: 'DM Mono', monospace;
+  --display: 'Bebas Neue', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  overflow-x: hidden;
+}
+
+/* ── NOISE TEXTURE overlay ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* ── NAVIGATION ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2.5rem;
+  background: rgba(245,240,232,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid rgba(14,12,10,0.12);
+}
+
+.nav-logo {
+  font-family: var(--display);
+  font-size: 1.6rem;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.nav-links a:hover { opacity: 1; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(26,143,165,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 20% 70%, rgba(184,124,42,0.07) 0%, transparent 55%);
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 9rem 2.5rem 4rem;
+  gap: 4rem;
+  position: relative;
+}
+
+.hero-left {}
+
+.hero-kicker {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ganga);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.hero-kicker::before {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 0.5px;
+  background: var(--ganga);
+}
+
+.hero-title {
+  font-family: var(--display);
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  line-height: 0.92;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+
+.hero-title span {
+  color: var(--gold);
+  display: block;
+}
+
+.hero-desc {
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: rgba(14,12,10,0.7);
+  max-width: 440px;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 0.9rem 2rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.25s;
+}
+
+.btn-primary:hover { background: var(--gold); }
+
+.btn-outline {
+  display: inline-block;
+  padding: 0.9rem 2rem;
+  border: 0.5px solid var(--ink);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.25s;
+}
+
+.btn-outline:hover { background: var(--ink); color: var(--paper); }
+
+.hero-right {
+  position: relative;
+  height: 520px;
+}
+
+.hero-card-stack {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-card {
+  position: absolute;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(14,12,10,0.12);
+}
+
+.hero-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hc1 { width: 280px; height: 340px; top: 20px; left: 20px; transform: rotate(-2.5deg); z-index: 3; }
+.hc2 { width: 220px; height: 280px; top: 60px; right: 10px; transform: rotate(1.8deg); z-index: 2; }
+.hc3 { width: 200px; height: 250px; bottom: 20px; left: 80px; transform: rotate(-1deg); z-index: 4; }
+
+.card-tag {
+  position: absolute;
+  bottom: 0;
+  left: 0; right: 0;
+  padding: 0.5rem 0.8rem;
+  background: rgba(14,12,10,0.75);
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--paper);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── LOCATION STRIP ── */
+.location-strip {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 1.2rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.loc-item {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.loc-item strong {
+  color: var(--paper);
+  opacity: 1;
+  font-weight: 400;
+}
+
+.loc-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: inline-block;
+}
+
+/* ── ABOUT SECTION ── */
+#about {
+  padding: 7rem 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.about-label {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.about-label::before {
+  content: '001';
+  opacity: 0.4;
+}
+
+.about-heading {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  line-height: 1.2;
+  font-style: italic;
+}
+
+.about-heading em { font-style: normal; color: var(--gold); }
+
+.about-text p {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: rgba(14,12,10,0.72);
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+
+.about-text p:last-child { margin-bottom: 0; }
+
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  padding-top: 3rem;
+  border-top: 0.5px solid rgba(14,12,10,0.12);
+}
+
+.stat-item {}
+
+.stat-number {
+  font-family: var(--display);
+  font-size: 2.8rem;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.3rem;
+}
+
+.stat-label {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(14,12,10,0.5);
+}
+
+/* ── RISHIKESH CONTEXT ── */
+.context-section {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 6rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.context-section::before {
+  content: 'RISHIKESH';
+  position: absolute;
+  font-family: var(--display);
+  font-size: 18vw;
+  color: rgba(245,240,232,0.03);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: 0.1em;
+}
+
+.context-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  position: relative;
+}
+
+.context-label {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ganga);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.context-label::before { content: '002'; opacity: 0.4; color: var(--paper); }
+
+.context-heading {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.context-heading strong { font-weight: 600; font-style: normal; color: var(--gold); }
+
+.context-text {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: rgba(245,240,232,0.65);
+  font-weight: 300;
+}
+
+.context-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 2.5rem;
+}
+
+.pill {
+  padding: 0.45rem 1rem;
+  border: 0.5px solid rgba(245,240,232,0.2);
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.6);
+  transition: all 0.2s;
+}
+
+.pill:hover { border-color: var(--ganga); color: var(--ganga); }
+
+.context-image-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.ctx-img {
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: rgba(245,240,232,0.05);
+}
+
+.ctx-img:first-child {
+  grid-row: span 2;
+  aspect-ratio: auto;
+}
+
+.ctx-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.75;
+  transition: opacity 0.3s;
+  filter: sepia(20%);
+}
+
+.ctx-img:hover img { opacity: 0.9; }
+
+/* ── THEMES SECTION ── */
+#themes {
+  padding: 7rem 2.5rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+}
+
+.section-label-row .label {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(14,12,10,0.5);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.section-label-row .label::before { content: '003'; }
+
+.section-title {
+  font-family: var(--display);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  letter-spacing: 0.03em;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.themes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 0.5px solid rgba(14,12,10,0.12);
+}
+
+.theme-card {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3/5;
+  cursor: pointer;
+  border-right: 0.5px solid rgba(14,12,10,0.12);
+  transition: flex 0.4s;
+  text-decoration: none;
+  display: block;
+}
+
+.theme-card:last-child { border-right: none; }
+
+.theme-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease, filter 0.4s;
+  filter: saturate(0.7) brightness(0.85);
+}
+
+.theme-card:hover img {
+  transform: scale(1.06);
+  filter: saturate(1) brightness(0.75);
+}
+
+.theme-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(14,12,10,0.85) 0%, rgba(14,12,10,0.15) 50%, transparent 100%);
+}
+
+.theme-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+}
+
+.theme-num {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  color: rgba(245,240,232,0.5);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.theme-name {
+  font-family: var(--display);
+  font-size: 1.8rem;
+  color: var(--paper);
+  letter-spacing: 0.04em;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.theme-tagline {
+  font-family: var(--serif);
+  font-size: 0.85rem;
+  color: rgba(245,240,232,0.65);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.4;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s;
+  opacity: 0;
+}
+
+.theme-card:hover .theme-tagline {
+  max-height: 80px;
+  opacity: 1;
+}
+
+.theme-accent-bar {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 3px;
+}
+
+.theme-arrow {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  width: 28px;
+  height: 28px;
+  border: 0.5px solid rgba(245,240,232,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(245,240,232,0.6);
+  font-size: 0.75rem;
+  transition: all 0.25s;
+}
+
+.theme-card:hover .theme-arrow {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--paper);
+}
+
+/* ── PALETTE SHOWCASE ── */
+.palette-section {
+  background: var(--paper2);
+  padding: 5rem 2.5rem;
+  border-top: 0.5px solid rgba(14,12,10,0.08);
+}
+
+.palette-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.palette-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  align-items: center;
+  gap: 3rem;
+  padding: 2rem 0;
+  border-bottom: 0.5px solid rgba(14,12,10,0.08);
+}
+
+.palette-row:last-child { border-bottom: none; }
+
+.palette-meta {}
+
+.palette-name {
+  font-family: var(--display);
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.3rem;
+}
+
+.palette-desc {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.45;
+}
+
+.palette-swatches {
+  display: flex;
+  height: 48px;
+  border-radius: 2px;
+  overflow: hidden;
+  border: 0.5px solid rgba(14,12,10,0.08);
+}
+
+.swatch {
+  flex: 1;
+  position: relative;
+  cursor: pointer;
+  transition: flex 0.3s;
+}
+
+.swatch:hover { flex: 2.5; }
+
+.swatch span {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.swatch:hover span { opacity: 1; }
+
+/* ── MIRROR SECTION ── */
+.mirror-section {
+  padding: 7rem 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mirror-intro {
+  max-width: 600px;
+  margin-bottom: 4rem;
+}
+
+.mirror-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.mirror-card {
+  padding: 2rem;
+  border: 0.5px solid rgba(14,12,10,0.1);
+  background: var(--cream);
+  position: relative;
+  transition: border-color 0.25s;
+}
+
+.mirror-card:hover { border-color: var(--gold); }
+
+.mirror-zone {
+  font-family: var(--display);
+  font-size: 3rem;
+  color: rgba(14,12,10,0.06);
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  line-height: 1;
+}
+
+.mirror-title {
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 0.8rem;
+  color: var(--ink);
+}
+
+.mirror-body {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  line-height: 1.8;
+  color: rgba(14,12,10,0.55);
+  letter-spacing: 0.03em;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 4rem 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: 'DEVGANGA';
+  position: absolute;
+  font-family: var(--display);
+  font-size: 14vw;
+  color: rgba(245,240,232,0.03);
+  bottom: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 4rem;
+}
+
+.footer-brand .brand-name {
+  font-family: var(--display);
+  font-size: 2rem;
+  letter-spacing: 0.06em;
+  margin-bottom: 1rem;
+}
+
+.footer-brand p {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: rgba(245,240,232,0.4);
+  line-height: 1.8;
+}
+
+.footer-nav h4 {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.4);
+  margin-bottom: 1.2rem;
+}
+
+.footer-nav ul { list-style: none; }
+
+.footer-nav li { margin-bottom: 0.6rem; }
+
+.footer-nav a {
+  font-size: 0.95rem;
+  color: rgba(245,240,232,0.7);
+  text-decoration: none;
+  font-style: italic;
+  transition: color 0.2s;
+}
+
+.footer-nav a:hover { color: var(--gold); }
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  border-top: 0.5px solid rgba(245,240,232,0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-bottom p {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: rgba(245,240,232,0.25);
+  text-transform: uppercase;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.hero-kicker { animation: fadeUp 0.8s ease both 0.1s; }
+.hero-title { animation: fadeUp 0.8s ease both 0.25s; }
+.hero-desc { animation: fadeUp 0.8s ease both 0.4s; }
+.hero-cta-group { animation: fadeUp 0.8s ease both 0.55s; }
+.hero-right { animation: fadeIn 1s ease both 0.6s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; padding-top: 7rem; }
+  .hero-right { height: 300px; }
+  .hc2, .hc3 { display: none; }
+  .hc1 { width: 100%; height: 100%; position: relative; top: 0; left: 0; transform: none; }
+  #about { grid-template-columns: 1fr; gap: 2rem; }
+  .context-inner { grid-template-columns: 1fr; }
+  .themes-grid { grid-template-columns: 1fr 1fr; }
+  .mirror-grid { grid-template-columns: 1fr 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+}
+
+@media (max-width: 600px) {
+  .themes-grid { grid-template-columns: 1fr; }
+  .mirror-grid { grid-template-columns: 1fr; }
+  .palette-row { grid-template-columns: 1fr; gap: 1rem; }
+  .about-stats { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">DEVGANGA</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#themes">Themes</a></li>
+    <li><a href="retro.html">Retro</a></li>
+    <li><a href="boho.html">Boho</a></li>
+    <li><a href="indian.html">Indian</a></li>
+    <li><a href="industrial.html">Industrial</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <p class="hero-kicker">Cafe Design Concept · Rishikesh, Uttarakhand</p>
+      <h1 class="hero-title">Where the<span>Ganga</span>meets the grind.</h1>
+      <p class="hero-desc">A comprehensive interior design moodboard for a cafe at the foothills of the Himalayas — four distinct souls, one location, infinite possibilities.</p>
+      <div class="hero-cta-group">
+        <a href="#themes" class="btn-primary">Explore Themes</a>
+        <a href="#about" class="btn-outline">The Vision</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card-stack">
+        <div class="hero-card hc1">
+          <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=80" alt="Retro cafe interior"/>
+          <div class="card-tag">Retro Classic</div>
+        </div>
+        <div class="hero-card hc2">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80" alt="Boho cafe"/>
+          <div class="card-tag">Boho Chic</div>
+        </div>
+        <div class="hero-card hc3">
+          <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&q=80" alt="Industrial cafe"/>
+          <div class="card-tag">Vintage Industrial</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="location-strip">
+    <div class="loc-item"><span class="loc-dot"></span>Location <strong>Rishikesh, Uttarakhand 249201</strong></div>
+    <div class="loc-item"><span class="loc-dot"></span>Altitude <strong>372 m above sea level</strong></div>
+    <div class="loc-item"><span class="loc-dot"></span>Climate <strong>Sub-Himalayan, temperate</strong></div>
+    <div class="loc-item"><span class="loc-dot"></span>Footfall type <strong>Pilgrims · Yogis · Backpackers · Families</strong></div>
+    <div class="loc-item"><span class="loc-dot"></span>Concepts <strong>4 Distinct Themes</strong></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-left">
+    <p class="about-label">The project</p>
+    <h2 class="about-heading">A cafe that speaks the <em>language of the river.</em></h2>
+  </div>
+  <div class="about-text">
+    <p>Rishikesh sits at the point where the Ganga descends from the Himalayas into the plains — a crossing of energies, cultures, and peoples. The city is simultaneously ancient and cosmopolitan, deeply spiritual and increasingly global. Any cafe that opens here must reckon with this duality.</p>
+    <p>This moodboard explores four distinct interior philosophies, each responding to a different facet of the city's identity. Together, they form a design vocabulary rooted in place — not imported, not generic, but genuinely of Rishikesh.</p>
+    <p>The project also proposes a strategic mirror placement system designed to increase customer dwell time, enhance spatial perception, and create the Instagram moments that drive organic discovery in the social media age.</p>
+    <div class="about-stats">
+      <div class="stat-item">
+        <div class="stat-number">4</div>
+        <div class="stat-label">Design themes</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">~400</div>
+        <div class="stat-label">Sq ft target size</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Seating covers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">5</div>
+        <div class="stat-label">Mirror zones mapped</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RISHIKESH CONTEXT -->
+<div class="context-section">
+  <div class="context-inner">
+    <div>
+      <p class="context-label">The location</p>
+      <h2 class="context-heading">Rishikesh is not just a city. It is a <strong>threshold.</strong></h2>
+      <p class="context-text">Nestled where the Ganga exits the Himalayas, Rishikesh has been a crossing point for centuries — between mountains and plains, between the ascetic and the worldly, between silence and the market. Today it draws a unique cocktail of pilgrims doing the char dham, international yoga practitioners, adventure sports tourists, and long-term backpackers on the spiritual trail.</p>
+      <p class="context-text" style="margin-top:1.2rem">This café sits within that context. Each design concept draws from a different layer of the city's identity — its ancient craft traditions, its river palette, its global-village energy, and its capacity to hold old and new simultaneously.</p>
+      <div class="context-pills">
+        <span class="pill">Yoga capital of India</span>
+        <span class="pill">Ganga Aarti nightly</span>
+        <span class="pill">UNESCO Himalayan foothills</span>
+        <span class="pill">Adventure sports hub</span>
+        <span class="pill">International pilgrim circuit</span>
+        <span class="pill">Char Dham gateway</span>
+      </div>
+    </div>
+    <div class="context-image-grid">
+      <div class="ctx-img">
+        <img src="https://images.unsplash.com/photo-1625993051424-4674e1c05ab7?w=400&q=80" alt="Rishikesh Ganga"/>
+      </div>
+      <div class="ctx-img">
+        <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=300&q=80" alt="Himalayan light"/>
+      </div>
+      <div class="ctx-img">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&q=80" alt="Mountain nature"/>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- THEMES -->
+<section id="themes">
+  <div class="section-label-row">
+    <span class="label">The four concepts</span>
+    <h2 class="section-title">FOUR SOULS</h2>
+  </div>
+
+  <div class="themes-grid">
+    <a href="retro.html" class="theme-card">
+      <div class="theme-accent-bar" style="background:#c9873a"></div>
+      <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=500&q=80" alt="Retro Classic"/>
+      <div class="theme-card-overlay"></div>
+      <div class="theme-card-content">
+        <p class="theme-num">01 — Retro Classic</p>
+        <h3 class="theme-name">THE VAULT</h3>
+        <p class="theme-tagline">Chesterfield leather, Edison warmth, and the gravity of old wood. A café that feels discovered, not built.</p>
+      </div>
+      <div class="theme-arrow">→</div>
+    </a>
+
+    <a href="boho.html" class="theme-card">
+      <div class="theme-accent-bar" style="background:#3a7d5e"></div>
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&q=80" alt="Boho Chic"/>
+      <div class="theme-card-overlay"></div>
+      <div class="theme-card-content">
+        <p class="theme-num">02 — Boho Chic</p>
+        <h3 class="theme-name">THE GROVE</h3>
+        <p class="theme-tagline">Nature reclaims the interior. Rattan, macramé, living walls, and the perpetual calm of filtered green light.</p>
+      </div>
+      <div class="theme-arrow">→</div>
+    </a>
+
+    <a href="indian.html" class="theme-card">
+      <div class="theme-accent-bar" style="background:#1a8fa5"></div>
+      <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=500&q=80" alt="Indian Analogous"/>
+      <div class="theme-card-overlay"></div>
+      <div class="theme-card-content">
+        <p class="theme-num">03 — Indian Analogous</p>
+        <h3 class="theme-name">THE RIVER</h3>
+        <p class="theme-tagline">Ganga blue to peacock teal. Jali shadows, lippan mirrors, ajrakh prints — the full chromatic world of the river.</p>
+      </div>
+      <div class="theme-arrow">→</div>
+    </a>
+
+    <a href="industrial.html" class="theme-card">
+      <div class="theme-accent-bar" style="background:#cc2200"></div>
+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=500&q=80" alt="Vintage Industrial"/>
+      <div class="theme-card-overlay"></div>
+      <div class="theme-card-content">
+        <p class="theme-num">04 — Vintage Industrial</p>
+        <h3 class="theme-name">THE YARD</h3>
+        <p class="theme-tagline">Cola trays become tables. Tyres frame mirrors. Cassette tapes cast light. Nostalgia rewired for espresso.</p>
+      </div>
+      <div class="theme-arrow">→</div>
+    </a>
+  </div>
+</section>
+
+<!-- PALETTE SHOWCASE -->
+<div class="palette-section">
+  <div class="palette-inner">
+    <div class="section-label-row" style="margin-bottom:2.5rem">
+      <span class="label" style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(14,12,10,0.5)">004 — Color worlds</span>
+      <h2 style="font-family:var(--display);font-size:clamp(2rem,4vw,3.5rem);letter-spacing:0.03em">PALETTE OVERVIEW</h2>
+    </div>
+
+    <div class="palette-row">
+      <div class="palette-meta">
+        <div class="palette-name">THE VAULT</div>
+        <div class="palette-desc">Retro · Tobacco warmth</div>
+      </div>
+      <div class="palette-swatches">
+        <div class="swatch" style="background:#1a0f0a"><span style="color:#c9a87c">espresso</span></div>
+        <div class="swatch" style="background:#3b1f0d"><span style="color:#e8c89a">dark oak</span></div>
+        <div class="swatch" style="background:#7a4427"><span style="color:#f5d9b8">tobacco</span></div>
+        <div class="swatch" style="background:#c9873a"><span style="color:#3b1f0d">amber</span></div>
+        <div class="swatch" style="background:#e8c98a"><span style="color:#3b1f0d">cream gold</span></div>
+        <div class="swatch" style="background:#f5f0e8"><span style="color:#7a4427">parchment</span></div>
+        <div class="swatch" style="background:#b87c42"><span style="color:#3b1f0d">brass</span></div>
+      </div>
+    </div>
+
+    <div class="palette-row">
+      <div class="palette-meta">
+        <div class="palette-name">THE GROVE</div>
+        <div class="palette-desc">Boho · Forest breath</div>
+      </div>
+      <div class="palette-swatches">
+        <div class="swatch" style="background:#f5f2eb"><span style="color:#4a6b58">linen</span></div>
+        <div class="swatch" style="background:#c8dbc0"><span style="color:#2e5040">sage</span></div>
+        <div class="swatch" style="background:#7dbf9e"><span style="color:#1a3829">leaf</span></div>
+        <div class="swatch" style="background:#3a7d5e"><span style="color:#f0ece0">forest</span></div>
+        <div class="swatch" style="background:#d4a96a"><span style="color:#2e3826">jute</span></div>
+        <div class="swatch" style="background:#e8d5b0"><span style="color:#4a3e2a">sand</span></div>
+        <div class="swatch" style="background:#c25a3a"><span style="color:#fdf5ec">terracotta</span></div>
+      </div>
+    </div>
+
+    <div class="palette-row">
+      <div class="palette-meta">
+        <div class="palette-name">THE RIVER</div>
+        <div class="palette-desc">Indian · Ganga chromatic</div>
+      </div>
+      <div class="palette-swatches">
+        <div class="swatch" style="background:#003d5c"><span style="color:#a8d8ea">deep indigo</span></div>
+        <div class="swatch" style="background:#0b5e73"><span style="color:#a8e6d8">teal ocean</span></div>
+        <div class="swatch" style="background:#1a8fa5"><span style="color:#d0f0f7">peacock</span></div>
+        <div class="swatch" style="background:#56c5d0"><span style="color:#003d5c">ganga blue</span></div>
+        <div class="swatch" style="background:#a8e6d8"><span style="color:#0b5e73">mint</span></div>
+        <div class="swatch" style="background:#d4a03a"><span style="color:#003d5c">turmeric gold</span></div>
+        <div class="swatch" style="background:#f5f0e2"><span style="color:#0b5e73">ivory</span></div>
+      </div>
+    </div>
+
+    <div class="palette-row">
+      <div class="palette-meta">
+        <div class="palette-name">THE YARD</div>
+        <div class="palette-desc">Industrial · Raw contrast</div>
+      </div>
+      <div class="palette-swatches">
+        <div class="swatch" style="background:#141414"><span style="color:#888">soot</span></div>
+        <div class="swatch" style="background:#2a2a2a"><span style="color:#aaa">cast iron</span></div>
+        <div class="swatch" style="background:#5a4a3a"><span style="color:#d4b896">raw leather</span></div>
+        <div class="swatch" style="background:#8b6914"><span style="color:#f5e8c0">rust gold</span></div>
+        <div class="swatch" style="background:#cc2200"><span style="color:#fff8f0">cola red</span></div>
+        <div class="swatch" style="background:#d4c4a8"><span style="color:#2a2a2a">aged bone</span></div>
+        <div class="swatch" style="background:#3c5a3c"><span style="color:#c8dcc8">factory green</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MIRROR SECTION -->
+<section class="mirror-section">
+  <div class="mirror-intro">
+    <p style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(14,12,10,0.4);margin-bottom:1rem">005 — The retention strategy</p>
+    <h2 style="font-family:var(--display);font-size:clamp(2rem,4vw,3.5rem);letter-spacing:0.03em;margin-bottom:1.5rem">MIRROR MAP</h2>
+    <p style="font-size:1rem;line-height:1.8;color:rgba(14,12,10,0.6);font-weight:300;font-style:italic">Strategically placed mirrors increase average customer dwell time by 3–8 minutes. Each zone has a specific function — from doubling perceived depth to creating social media moments that market the café for free.</p>
+  </div>
+  <div class="mirror-grid">
+    <div class="mirror-card">
+      <div class="mirror-zone">Z1</div>
+      <h3 class="mirror-title">Behind the bar</h3>
+      <p class="mirror-body">Large mirror (120×80cm min) behind espresso machine. Makes shelves appear twice as deep. Customers watch drink preparation from their seat. Frame: ornate gold / lippan / driftwood / rebar — per theme.</p>
+    </div>
+    <div class="mirror-card">
+      <div class="mirror-zone">Z2</div>
+      <h3 class="mirror-title">Entrance-facing wall</h3>
+      <p class="mirror-body">The "retention mirror" — customers see themselves the moment they enter. Increases dwell time in the prime upsell zone. Centre at 165cm height. The most beautiful mirror in the space.</p>
+    </div>
+    <div class="mirror-card">
+      <div class="mirror-zone">Z3</div>
+      <h3 class="mirror-title">Beside plant clusters</h3>
+      <p class="mirror-body">Round mirrors 50–80cm placed beside or behind plant groupings. Doubles perceived greenery with zero extra plants. Critical in the Boho theme. In other themes: beside the most decorative shelf.</p>
+    </div>
+    <div class="mirror-card">
+      <div class="mirror-zone">Z4</div>
+      <h3 class="mirror-title">The selfie mirror</h3>
+      <p class="mirror-body">One statement mirror per theme. Warm spotlight above. Customers photograph themselves — free social media content. Placed near natural light for best quality. The Instagram anchor of the space.</p>
+    </div>
+    <div class="mirror-card">
+      <div class="mirror-zone">Z5</div>
+      <h3 class="mirror-title">Corridor / passage</h3>
+      <p class="mirror-body">Floor-to-ceiling mirror on one side of any narrow passage. Eliminates cramped feeling. Customers pause to look — adding 2–3 minutes per visit. Three matching arch mirrors if full-length is not possible.</p>
+    </div>
+    <div class="mirror-card">
+      <div class="mirror-zone">⚠</div>
+      <h3 class="mirror-title">What to avoid</h3>
+      <p class="mirror-body">Never reflect kitchen clutter or bathroom doors. Avoid mirrors facing each other directly. No bright mirrors in intimate zones. Clean daily — spotted mirrors undermine the entire quality perception.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="brand-name">DEVGANGA</div>
+      <p>Cafe Design Concept<br>Rishikesh, Uttarakhand<br>2025 — Moodboard & Interior Vision</p>
+    </div>
+    <div class="footer-nav">
+      <h4>Design concepts</h4>
+      <ul>
+        <li><a href="retro.html">The Vault — Retro Classic</a></li>
+        <li><a href="boho.html">The Grove — Boho Chic</a></li>
+        <li><a href="indian.html">The River — Indian Analogous</a></li>
+        <li><a href="industrial.html">The Yard — Vintage Industrial</a></li>
+      </ul>
+    </div>
+    <div class="footer-nav">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#about">About the project</a></li>
+        <li><a href="#themes">All four themes</a></li>
+        <li><a href="index.html#palette">Palette overview</a></li>
+        <li><a href="index.html#mirror">Mirror strategy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>Rishikesh · Uttarakhand · India · 249201</p>
+    <p>Interior concept moodboard — all themes, palettes & layouts</p>
+  </div>
+</footer>
+
+</body>
+</html>
